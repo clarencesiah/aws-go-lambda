@@ -15,9 +15,10 @@ phases:
         # Set them relative to your home directory
       - pwd
       - ls -R
-      - cd ${GOPATH}/src/${PACKAGE} && go get ./...
+      - cd ${GOPATH}/src/${PACKAGE}
       - pwd
       - ls -R
+      - go get ./...
 
   build:
     commands:
