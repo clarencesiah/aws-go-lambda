@@ -16,20 +16,10 @@ import (
 	"log"
 )
 
+// Movie entity
 type Movie struct {
 	ID   string
 	Name string
-}
-
-func getItems() []Movie {
-	raw, err := ioutil.ReadFile("./movies.json")
-	if err != nil {
-		log.Fatalf("Got error reading file: %s", err)
-	}
-
-	var items []Movie
-	json.Unmarshal(raw, &items)
-	return items
 }
 
 func findAll(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
