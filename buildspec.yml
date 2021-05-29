@@ -7,6 +7,7 @@ env:
 phases:
   install:
     commands:
+      - PACKAGE="github.com/clarencesiah/aws-go-lambda"
       - mkdir -p "/go/src/$(dirname ${PACKAGE})"
       - ln -s "${CODEBUILD_SRC_DIR}" "/go/src/${PACKAGE}"
 
