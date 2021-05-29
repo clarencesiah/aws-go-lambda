@@ -2,13 +2,14 @@ version: 0.1
 env:
   variables:
     S3_BUCKET: "movies-api-deployment-packages"
-    PACKAGE: "aws-go-lambda"
+    PACKAGE: "github.com/clarencesiah/aws-go-lambda"
 
 phases:
   install:
     commands:
-      - mkdir -p "/go/src/${PACKAGE}"
+      - mkdir -p "/go/src/$(dirname ${PACKAGE})"
       - ln -s "${CODEBUILD_SRC_DIR}" "/go/src/${PACKAGE}"
+      - env
       - go get -u golang.org/x/lint/golint
 
   pre_build:
@@ -16,7 +17,7 @@ phases:
       - cd "/go/src/${PACKAGE}"
       - ls
       - echo $GOPATH
-      - go get -t -v ...
+      - go get -t -v ./...
       - golint -set_exit_status
       - go vet .
       - go test .
