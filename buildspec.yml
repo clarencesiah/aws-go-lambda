@@ -14,6 +14,7 @@ phases:
     commands:
       - cd "/go/src/${PACKAGE}"
       - ls
+      - go get ./...
 
   build:
     commands:
