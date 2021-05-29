@@ -17,12 +17,13 @@ phases:
 
         # Set them relative to your home directory
       - pwd
+      - ls -R
       - mkdir bin
       - set GOPATH=$HOME && set GOBIN=$GOPATH/bin
       - echo "GOPATH = ${GOPATH}\nGOBIN = ${GOBIN}"
       - cd "/go/src/github.com/clarencesiah/aws-go-lambda"
-      - ls
-      - go get -v ./...
+      - pwd
+      - ls -R
 
   build:
     commands:
