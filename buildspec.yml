@@ -12,6 +12,12 @@ phases:
 
   pre_build:
     commands:
+        # Check what $GOPATH and $GOBIN are currently
+      - echo "GOPATH = ${GOPATH}\nGOBIN = ${GOBIN}"
+
+        # Set them relative to your home directory
+      - export GOPATH=$HOME && export GOBIN=$GOPATH/bin
+      - echo "GOPATH = ${GOPATH}\nGOBIN = ${GOBIN}"
       - cd "/go/src/${PACKAGE}"
       - ls
       - export GOPATH=$HOME
