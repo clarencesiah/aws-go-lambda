@@ -7,15 +7,15 @@ env:
 phases:
   install:
     commands:
-      - mkdir -p ${GOPATH}/src/${PACKAGE}
-      - cp -a ${CODEBUILD_SRC_DIR}/.  ${GOPATH}/src/${PACKAGE}
+      - mkdir -p ${GOPATH}/src/github.com/clarencesiah/aws-go-lambda
+      - cp -a ${CODEBUILD_SRC_DIR}/.  ${GOPATH}/src/github.com/clarencesiah/aws-go-lambda
 
   pre_build:
     commands:
         # Set them relative to your home directory
       - pwd
       - ls -R
-      - cd ${GOPATH}/src/${PACKAGE}
+      - cd ${GOPATH}/src/github.com/clarencesiah/aws-go-lambda
       - pwd
       - ls -R
       - go get ./...
