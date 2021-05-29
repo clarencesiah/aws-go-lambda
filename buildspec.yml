@@ -7,21 +7,15 @@ env:
 phases:
   install:
     commands:
-      - mkdir -p "/go/src/$(dirname "github.com/clarencesiah/aws-go-lambda")"
-      - ln -s "${CODEBUILD_SRC_DIR}" "/go/src/github.com/clarencesiah/aws-go-lambda"
+      - mkdir -p ${GOPATH}/src/${PACKAGE}
+      - cp -a ${CODEBUILD_SRC_DIR}/.  ${GOPATH}/src/${PACKAGE}
 
   pre_build:
     commands:
-        # Check what $GOPATH and $GOBIN are currently
-      - echo "GOPATH = ${GOPATH}\nGOBIN = ${GOBIN}"
-
         # Set them relative to your home directory
       - pwd
       - ls -R
-      - mkdir bin
-      - set GOPATH=$HOME && set GOBIN=$GOPATH/bin
-      - echo "GOPATH = ${GOPATH}\nGOBIN = ${GOBIN}"
-      - cd "/go/src/github.com/clarencesiah/aws-go-lambda"
+      - cd ${GOPATH}/src/${PACKAGE} && go get ./...
       - pwd
       - ls -R
 
