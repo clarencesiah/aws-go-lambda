@@ -14,7 +14,8 @@ phases:
     commands:
       - cd "/go/src/${PACKAGE}"
       - ls
-      - go get ./...
+      - export GOPATH=$HOME
+      - go get -v ./...
 
   build:
     commands:
