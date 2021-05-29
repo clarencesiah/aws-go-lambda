@@ -8,7 +8,8 @@ phases:
   install:
     commands:
       - mkdir -p ./src/github.com/clarencesiah/aws-go-lambda
-      - cp -a ${CODEBUILD_SRC_DIR}/.  ./src/github.com/clarencesiah/aws-go-lambda
+      - ls -R
+      - cp -a ${CODEBUILD_SRC_DIR}/.  ${GOPATH}/src/github.com/clarencesiah/aws-go-lambda
 
   pre_build:
     commands:
