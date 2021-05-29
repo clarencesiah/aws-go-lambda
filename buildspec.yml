@@ -14,7 +14,8 @@ phases:
   pre_build:
     commands:
       - cd "/go/src/${PACKAGE}"
-      - go get -t ...
+      - ls
+      - go get ./...
       - golint -set_exit_status
       - go vet .
       - go test .
