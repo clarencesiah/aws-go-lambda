@@ -17,7 +17,6 @@ phases:
       - cd "/go/src/${PACKAGE}"
       - ls
       - echo $GOPATH
-      - go get -t -v ./...
       - golint -set_exit_status
       - go vet .
       - go test .
