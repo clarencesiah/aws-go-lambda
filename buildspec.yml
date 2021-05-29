@@ -16,11 +16,12 @@ phases:
       - echo "GOPATH = ${GOPATH}\nGOBIN = ${GOBIN}"
 
         # Set them relative to your home directory
-      - export GOPATH=$HOME && export GOBIN=$GOPATH/bin
+      - pwd
+      - mkdir bin
+      - set GOPATH=$HOME && set GOBIN=$GOPATH/bin
       - echo "GOPATH = ${GOPATH}\nGOBIN = ${GOBIN}"
       - cd "/go/src/${PACKAGE}"
       - ls
-      - export GOPATH=$HOME
       - go get -v ./...
 
   build:
