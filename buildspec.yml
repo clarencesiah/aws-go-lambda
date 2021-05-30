@@ -18,6 +18,7 @@ phases:
         #- ls -R
         #- GOPATH=${GOPATH}/src
         #- echo ${GOPATH}
+        - mkdir src
         - cp -a ./main.go ./src/
         - go get -v ./src/...
 
