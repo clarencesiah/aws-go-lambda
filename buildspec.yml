@@ -1,18 +1,23 @@
-ersion: 0.1
+version: 0.1
 env:
   variables:
     S3_BUCKET: "movies-api-deployment-packages"
     PACKAGE: "github.com/clarencesiah/aws-go-lambda"
 
 phases:
-  install:
-    commands:
-        - pwd
+  #install:
+    #commands:
+        #- pwd
 
   pre_build:
     commands:
         # Set them relative to your home directory
-        # Set GOPATH=${GOPATH}/src to different path also not working, don't know why?
+        # Set ${GOPATH} to different path also not working, don't know why?
+        #- echo ${GOPATH}
+        #- pwd
+        #- ls -R
+        #- GOPATH=${GOPATH}/src
+        #- echo ${GOPATH}
         - cp -a ./main.go ./src/
         - go get -v ./src/...
 
@@ -23,6 +28,6 @@ phases:
         - echo $CODEBUILD_RESOLVED_SOURCE_VERSION
         - aws s3 cp $CODEBUILD_RESOLVED_SOURCE_VERSION.zip s3://$S3_BUCKET/
 
-  post_build:
-    commands:
-        - aws lambda update-function-code --function-name FindAllMovies --s3-bucket $S3_BUCKET --s3-key $CODEBUILD_RESOLVED_SOURCE_VERSION.zip
+  #post_build:
+    #commands:
+        #- aws lambda update-function-code --function-name FindAllMovies --s3-bucket $S3_BUCKET --s3-key $CODEBUILD_RESOLVED_SOURCE_VERSION.zip
