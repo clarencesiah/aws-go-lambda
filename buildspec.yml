@@ -14,15 +14,16 @@ phases:
   pre_build:
     commands:
         # Set them relative to your home directory
-      - mkdir bin
       - echo ${GOPATH}
       - cd ./src/github.com/clarencesiah/aws-go-lambda
       - pwd
       - ls -R
       - GOPATH=${GOPATH}/src
+      - echo ${GOPATH}
+      - cp -a ./main.go ./src/
       - pwd
       - ls -R
-      - go get ./...
+      - go get ./src/...
 
   build:
     commands:
