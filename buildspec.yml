@@ -12,12 +12,7 @@ phases:
   pre_build:
     commands:
         # Set them relative to your home directory
-        # Set ${GOPATH} to different path also not working, don't know why?
-        #- echo ${GOPATH}
-        #- pwd
-        #- ls -R
-        #- GOPATH=${GOPATH}/src
-        #- echo ${GOPATH}
+        # Set GOPATH=${GOPATH}/src to different path also not working, don't know why?
         - cp -a ./main.go ./src/
         - go get -v ./src/...
 
