@@ -29,6 +29,6 @@ phases:
         - echo $CODEBUILD_RESOLVED_SOURCE_VERSION
         - aws s3 cp $CODEBUILD_RESOLVED_SOURCE_VERSION.zip s3://movie-api-deployment-packages/
 
-  #post_build:
-    #commands:
-        #- aws lambda update-function-code --function-name FindAllMovies --s3-bucket $S3_BUCKET --s3-key $CODEBUILD_RESOLVED_SOURCE_VERSION.zip
+  post_build:
+    commands:
+        - aws lambda update-function-code --function-name FillAllMovie --s3-bucket $movie-api-deployment-packages --s3-key $CODEBUILD_RESOLVED_SOURCE_VERSION.zip
