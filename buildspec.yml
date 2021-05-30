@@ -19,7 +19,7 @@ phases:
       - cd ./src/github.com/clarencesiah/aws-go-lambda
       - pwd
       - ls -R
-      - cd ..
+      - GOPATH=${GOPATH}/src
       - pwd
       - ls -R
       - go get ./...
