@@ -5,6 +5,9 @@ env:
     PACKAGE: "github.com/clarencesiah/aws-go-lambda"
 
 phases:
+  install:
+    commands:
+        - pwd
 
   pre_build:
     commands:
@@ -15,13 +18,16 @@ phases:
         #- ls -R
         #- GOPATH=${GOPATH}/src
         #- echo ${GOPATH}
-      - cp -a ./main.go ./src/
-      - go get -v ./src/...
+        - cp -a ./main.go ./src/
+        - go get -v ./src/...
 
   build:
     commands:
-      - GOOS=linux go build -o main
-      - zip $CODEBUILD_RESOLVED_SOURCE_VERSION.zip main
-      - echo $CODEBUILD_RESOLVED_SOURCE_VERSION
-      - aws s3 cp $CODEBUILD_RESOLVED_SOURCE_VERSION.zip s3://$S3_BUCKET/
-      
+        - GOOS=linux go build -o main
+        - zip $CODEBUILD_RESOLVED_SOURCE_VERSION.zip main
+        - echo $CODEBUILD_RESOLVED_SOURCE_VERSION
+        - aws s3 cp $CODEBUILD_RESOLVED_SOURCE_VERSION.zip s3://$S3_BUCKET/
+
+  post_build:
+    commands:
+        - aws lambda update-function-code --function-name FindAllMovies --s3-bucket $S3_BUCKET --s3-key $CODEBUILD_RESOLVED_SOURCE_VERSION.zip
