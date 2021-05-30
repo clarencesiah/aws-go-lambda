@@ -1,7 +1,7 @@
 version: 0.1
 env:
   variables:
-    S3_BUCKET: "movies-api-deployment-packages"
+    S3_BUCKET: "movie-api-deployment-packages"
     PACKAGE: "github.com/clarencesiah/aws-go-lambda"
 
 phases:
