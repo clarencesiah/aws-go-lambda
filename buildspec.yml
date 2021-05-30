@@ -9,13 +9,13 @@ phases:
     commands:
       - mkdir -p ./src/github.com/clarencesiah/aws-go-lambda
       - ls -R
-      - cp -a ${CODEBUILD_SRC_DIR}/.  ${GOPATH}/src/github.com/clarencesiah/aws-go-lambda
+      - pwd
 
   pre_build:
     commands:
         # Set them relative to your home directory
-      - pwd
-      - ls -R
+      - mkdir bin
+      - echo ${GOPATH}
       - cd ./src/github.com/clarencesiah/aws-go-lambda
       - pwd
       - ls -R
