@@ -27,6 +27,7 @@ phases:
         - GOOS=linux go build -o main
         - zip $CODEBUILD_RESOLVED_SOURCE_VERSION.zip main
         - echo $CODEBUILD_RESOLVED_SOURCE_VERSION
+        - echo $CODEBUILD_RESOLVED_SOURCE_VERSION
         - aws s3 cp $CODEBUILD_RESOLVED_SOURCE_VERSION.zip s3://movie-api-deployment-packages/
 
   #post_build:
