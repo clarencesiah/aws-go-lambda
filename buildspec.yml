@@ -23,7 +23,7 @@ phases:
       - cp -a ./main.go ./src/
       - pwd
       - ls -R
-      - go get ./src/...
+      - go get -v ./src/...
 
   build:
     commands:

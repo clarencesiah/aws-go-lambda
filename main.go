@@ -12,8 +12,6 @@ import (
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 
 	"encoding/json"
-	"io/ioutil"
-	"log"
 )
 
 // Movie entity
