@@ -21,13 +21,6 @@ type Movie struct {
 }
 
 func findAll(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
-	size, err := strconv.Atoi(request.Headers["Count"])
-	if err != nil {
-		return events.APIGatewayProxyResponse{
-			StatusCode: http.StatusBadRequest,
-			Body:       "Count Header should be a number",
-		}, nil
-	}
 
 	sess := session.Must(session.NewSessionWithOptions(session.Options{
 		SharedConfigState: session.SharedConfigEnable,
@@ -38,10 +31,9 @@ func findAll(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 
 	req, res := svc.ScanRequest(&dynamodb.ScanInput{
 		TableName: aws.String("movies"),
-		Limit:     aws.Int64(int64(size)),
 	})
 
-	err = req.Send()
+	err := req.Send()
 
 	if err != nil {
 		return events.APIGatewayProxyResponse{
