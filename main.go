@@ -3,7 +3,6 @@ package main
 // snippet-start:[dynamodb.go.load_items.imports]
 import (
 	"net/http"
-	"strconv"
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
